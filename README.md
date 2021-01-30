@@ -1,5 +1,6 @@
 # SwiftExtensions
-> Here you can find some swift extensions
+> One of the best features of Swift, from my point of view, is extensions. They enable you to add new methods to any class and the whole project will be able to call them without additional inheritance and overloading.
+Plus with several new methods (extensions) we’ll get a short, clean and easily maintainable code in Swift.
 
 ## Table of contents
 - [SwiftExtensions](#swiftextensions)
@@ -30,7 +31,8 @@ List of features ready and TODOs for future development
 
 ## Status
 Project is: _in progress_
-Swift extensions will always need to be updated. Please, feel free to add someones you think are necessary for the community
+Swift extensions will always need to be updated. Please, feel free to modify them to meet your requirements and include them into your projects
+I hope these extensions helped you to make your code shorter and cleaner. 
 
 ## Contact
 Created by [@mario2r](https://github.com/mario2r) - feel free to contact me!
