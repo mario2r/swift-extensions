@@ -17,5 +17,53 @@ extension Encodable {
     public var jsonData: Data? {
         return try? JSONEncoder().encode(self)
     }
+
+    public var object: [String: Any] {
+        guard let data = jsonData else { return [:] }
+        return (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)) as? Object ?? [:]
+    }
     
+}
+
+public extension Decodable {
+
+    static func removeRootKeyFrom(json: String, using encoding: String.Encoding = .utf8) -> Self? {
+        guard let data = json.data(using: encoding) else {
+            return nil
+        }
+
+        do {
+            let rawData = try JSONDecoder().decode([String: Self].self, from: data)
+            return rawData.first?.value
+        } catch {
+            print(error)
+            return nil
+        }
+    }
+
+    static func from(json: String, using encoding: String.Encoding = .utf8) -> Self? {
+        guard let data = json.data(using: encoding) else {
+            return nil
+        }
+        return from(data: data)
+    }
+
+    static func from(url urlString: String) -> Self? {
+        guard let url = URL(string: urlString) else {
+            return nil
+        }
+        guard let data = try? Data(contentsOf: url) else {
+            return nil
+        }
+        return from(data: data)
+    }
+
+    static func from(data: Data) -> Self? {
+        do {
+            return try JSONDecoder().decode(Self.self, from: data)
+        } catch {
+            print(error)
+            return nil
+        }
+    }
 }
