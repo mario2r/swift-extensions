@@ -13,4 +13,9 @@ extension Double {
         String(format: "%.02f", self)
     }
 
+    // MARK: - Ratio
+    var adjusted: CGFloat {
+        return CGFloat(self) * Device.ratio
+    }
+
 }
