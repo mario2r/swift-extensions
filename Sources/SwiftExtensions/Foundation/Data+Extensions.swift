@@ -6,21 +6,24 @@
 import Foundation
 
 public extension Data {
+    
+    // MARK: - Bytes
+    var bytes: [UInt8] {
+        return [UInt8](self)
+    }
 
     // MARK: - Decode Base64
     var base64Decoded: String? {
-        let utf8 = String(data: self, encoding: .utf8)
-        return utf8
+        return self.string(encoding: .utf8)
     }
-
-    struct HexEncodingOptions: OptionSet {
-        let rawValue: Int
-        static let upperCase = HexEncodingOptions(rawValue: 1 << 0)
+    
+    // MARK: - Methods
+    func string(encoding: String.Encoding) -> String? {
+        return String(data: self, encoding: encoding)
     }
-
-    func hexEncodedString(options: HexEncodingOptions = []) -> String {
-        let format = options.contains(.upperCase) ? "%02hhX" : "%02hhx"
-        return self.map { String(format: format, $0) }.joined()
+    
+    func jsonObject(options: JSONSerialization.ReadingOptions = []) throws -> Any {
+        return try JSONSerialization.jsonObject(with: self, options: options)
     }
 
 }

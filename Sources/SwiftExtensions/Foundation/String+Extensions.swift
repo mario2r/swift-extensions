@@ -3,7 +3,26 @@
 //  Created by mario2r on 26/01/2021.
 //
 
+
+#if canImport(Foundation)
+import Foundation
+#endif
+
+#if canImport(UIKit)
 import UIKit
+#endif
+
+#if canImport(AppKit)
+import AppKit
+#endif
+
+#if canImport(CoreGraphics)
+import CoreGraphics
+#endif
+
+#if canImport(CoreLocation)
+import CoreLocation
+#endif
 
 public extension String {
     
@@ -12,16 +31,16 @@ public extension String {
         return (self as NSString).boolValue
     }
     
-        var length: Int {
+    var length: Int {
         return count
     }
 
-    /// MARK: - Localized
+    // MARK: - Localized
      var localized: String {
         NSLocalizedString(self, comment: "")
     }
 
-    /// MARK: - Subscripts
+    // MARK: - Subscripts
     subscript (i: Int) -> String {
         return self[i ..< i + 1]
     }
@@ -42,18 +61,19 @@ public extension String {
         return String(self[start ..< end])
     }
 
-    /// MARK: - Trimm
+    // MARK: - Trimm
      var trimmed: String {
         self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    /// MARK: - Transform
+    // MARK: - Transform
     func toDate(format: String) -> Date? {
         let df = DateFormatter()
         df.dateFormat = format
         return df.date(from: self)
     }
-
+    
+    #if canImport(CoreLocation)
     var asCoordinates: CLLocationCoordinate2D? {
         let components = self.components(separatedBy: ",")
         if components.count != 2 { return nil }
@@ -65,36 +85,20 @@ public extension String {
         }
         return nil
     }
-
+    #endif
+    
     var asURL: URL? {
         URL(string: self)
     }
-
-    var asDictionary: [String: Any]? {
-        guard let data = self.data(using: .utf8) else { return nil }
-        return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
+    
+    @discardableResult
+    mutating func reverse() -> String {
+        let chars: [Character] = reversed()
+        self = String(chars)
+        return self
     }
 
-    var asArray: [Any]? {
-        guard let data = self.data(using: .utf8) else { return nil }
-        return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [Any]
-    }
-
-    var md5: String? {
-        let length = Int(CC_MD5_DIGEST_LENGTH)
-        
-        guard let data = self.data(using: String.Encoding.utf8) else { return nil }
-        
-        let hash = data.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) -> [UInt8] in
-            var hash: [UInt8] = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
-            CC_MD5(bytes.baseAddress, CC_LONG(data.count), &hash)
-            return hash
-        }
-        
-        return (0..<length).map { String(format: "%02x", hash[$0]) }.joined()
-    }
-
-    /// MARK: - Validation
+    // MARK: - Validation
     var containsOnlyDigits: Bool {
         let notDigits = NSCharacterSet.decimalDigits.inverted
         return rangeOfCharacter(from: notDigits, options: String.CompareOptions.literal, range: nil) == nil
@@ -110,8 +114,31 @@ public extension String {
     }
 
     var isValidEmail: Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: self)
+        // http://emailregex.com/
+        let regex =
+        "^(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[\\p{L}0-9](?:[a-z0-9-]*[\\p{L}0-9])?\\.)+[\\p{L}0-9](?:[\\p{L}0-9-]*[\\p{L}0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[\\p{L}0-9-]*[\\p{L}0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+        return range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
     }
+    
+    var isPalindrome: Bool {
+        let letters = filter { $0.isLetter }
+        guard !letters.isEmpty else { return false }
+        let midIndex = letters.index(letters.startIndex, offsetBy: letters.count / 2)
+        let firstHalf = letters[letters.startIndex..<midIndex]
+        let secondHalf = letters[midIndex..<letters.endIndex].reversed()
+        return !zip(firstHalf, secondHalf).contains(where: { $0.lowercased() != $1.lowercased() })
+    }
+    
+    var isValidUrl: Bool {
+        return URL(string: self) != nil
+    }
+    
+    // MARK: - Methods
+    func contains(_ string: String, caseSensitive: Bool = true) -> Bool {
+        if !caseSensitive {
+            return range(of: string, options: .caseInsensitive) != nil
+        }
+        return range(of: string) != nil
+    }
+
 }
