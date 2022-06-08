@@ -29,7 +29,7 @@ let package = Package(
 This library contains the most common Swift extensions I have used when developing but it doesn't mean they are the only or better ones. 
 Just feel free to provide your feedback and contribution. Really happy to complete this library with all your experiences.
 
-Please, refer to [contributing guidelines](https://github.com/mario2r/swift-extensions/main/CONTRIBUTING.md) before participating
+Please, refer to [contributing guidelines](https://github.com/mario2r/swift-extensions/blob/main/CONTRIBUTING.md) before participating
 
 ## Authors
 
@@ -37,4 +37,4 @@ Mario Romero – [GitHub](https://github.com/mario2r)
 
 ## License
 
-SwiftExtensions is released under the MIT license. See [LICENSE](https://github.com/mario2r/swift-extensions/main/LICENSE) for more information.
+SwiftExtensions is released under the MIT license. See [LICENSE](https://github.com/mario2r/swift-extensions/blob/main/LICENSE) for more information.
