@@ -1,3 +1,41 @@
-# Common Swift extensions
+# SwiftExtensions
+> Some of the most common swift extensions
 
-A description of this package.
+[![Swift Version][swift-image]][swift-url]
+[![SPM compatible](https://img.shields.io/badge/SPM-Compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager/)
+[![Swift](https://img.shields.io/badge/Swift-5.5-green.svg)](https://swift.org)
+[![Xcode](https://img.shields.io/badge/Xcode-13.4-blue.svg)](https://developer.apple.com/xcode)
+[![MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
+
+During my work career as Swift developer I have faced lot of situations where some extensions where needed to avoid code duplication
+
+## Installation
+
+Add this project on your `Package.swift`
+
+```swift
+import PackageDescription
+
+let package = Package(
+    name: "YOUR_PROJECT_NAME",
+    targets: [],
+    dependencies: [
+        .package(url: "https://github.com/mario2r/swift-extensions.git", from: "1.0.0")
+    ]
+)
+```
+
+## Get involved
+
+This library contains the most common Swift extensions I have used when developing but it doesn't mean they are the only or better ones. 
+Just feel free to provide your feedback and contribution. Really happy to complete this library with all your experiences.
+
+Please, refer to [contributing guidelines](https://github.com/mario2r/swift-extensions/CONTRIBUTING.md) before participating
+
+## Authors
+
+Mario Romero – [GitHub](https://github.com/mario2r)
+
+## License
+
+SwiftExtensions is released under the MIT license. See [LICENSE](https://github.com/mario2r/swift-extensions/LICENSE) for more information.
