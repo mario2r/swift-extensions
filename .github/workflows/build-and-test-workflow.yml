@@ -23,5 +23,6 @@ jobs:
       run: swift test -v
   swiftlint:
     runs-on: ubuntu-latest
+    steps:
     - name: SwiftLint
       uses: norio-nomura/action-swiftlint@3.2.1
