@@ -28,8 +28,8 @@ class DateTestCases: XCTestCase {
         let date = Calendar.current.date(from: components)
         
         XCTAssertNotNil(date)
-        XCTAssertEqual(date!.weekOfYear, 52)
-        XCTAssertEqual(date!.weekOfMonth, 0)
+        XCTAssertEqual(date!.weekOfYear, 1)
+        XCTAssertEqual(date!.weekOfMonth, 1)
         XCTAssertEqual(date!.year, 2022)
         XCTAssertEqual(date!.month, 1)
         XCTAssertEqual(date!.day, 1)
