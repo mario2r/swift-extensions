@@ -7,11 +7,8 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    types: [opened, edited, reopened, ready_for_review]
-    paths:
-      - '.github/workflows/swiftlint.yml'
-      - '.swiftlint.yml'
-      - '**/*.swift'
+    branches:
+      - master
 jobs:
   build:
     runs-on: macos-latest
