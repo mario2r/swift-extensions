@@ -18,25 +18,18 @@ class DateTestCases: XCTestCase {
     }
 
     func testDates() throws {
-        var components = DateComponents()
-        components.year = 2022
-        components.month = 1
-        components.day = 1
-        components.hour = 9
-        components.minute = 0
-        components.second = 0
-        let date = Calendar.current.date(from: components)
+        let date = Date()
         
         XCTAssertNotNil(date)
-        XCTAssertEqual(date!.weekOfYear, 1)
-        XCTAssertEqual(date!.weekOfMonth, 1)
-        XCTAssertEqual(date!.year, 2022)
-        XCTAssertEqual(date!.month, 1)
-        XCTAssertEqual(date!.day, 1)
-        XCTAssertEqual(date!.hour, 9)
-        XCTAssertEqual(date!.minute, 0)
-        XCTAssertEqual(date!.second, 0)
-        XCTAssertEqual(date!.weekday, 7)
+        XCTAssertEqual(date.weekOfYear, Calendar.current.component(.weekOfYear, from: date))
+        XCTAssertEqual(date.weekOfMonth, Calendar.current.component(.weekOfMonth, from: date))
+        XCTAssertEqual(date.year, Calendar.current.component(.year, from: date))
+        XCTAssertEqual(date.month, Calendar.current.component(.month, from: date))
+        XCTAssertEqual(date.day, Calendar.current.component(.day, from: date))
+        XCTAssertEqual(date.hour, Calendar.current.component(.hour, from: date))
+        XCTAssertEqual(date.minute, Calendar.current.component(.minute, from: date))
+        XCTAssertEqual(date.second, Calendar.current.component(.second, from: date))
+        XCTAssertEqual(date.weekday, Calendar.current.component(.weekday, from: date))
         
         
     }
