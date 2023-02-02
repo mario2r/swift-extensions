@@ -20,7 +20,9 @@ jobs:
     - name: Build
       run: swift build -v
     - name: Tests
-      run: swift test -v --enable-code-coverage
-    - name: Test coverage
-      uses: maxep/spm-lcov-action@0.3.0
+    - run: swift test --enable-test-discovery --enable-code-coverage
+    - uses: mattpolzin/swift-codecov-action@0.7.5
+      with:
+        MINIMUM_COVERAGE: 70
+        INCLUDE_TESTS: 'true'
 
