@@ -20,4 +20,5 @@ jobs:
     - name: Build
       run: swift build -v
     - name: Tests
-      run: swift test -c debug
+      run: swift test -v
+
