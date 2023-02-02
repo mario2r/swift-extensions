@@ -19,22 +19,24 @@ class DateTestCases: XCTestCase {
 
     func testDates() throws {
         var components = DateComponents()
-        components.year = 1900
-        components.month = 12
-        components.day = 24
-        components.hour = 7
-        components.second = 35
+        components.year = 2022
+        components.month = 1
+        components.day = 1
+        components.hour = 9
+        components.minute = 0
+        components.second = 0
         let date = Calendar.current.date(from: components)
         
         XCTAssertNotNil(date)
         XCTAssertEqual(date!.weekOfYear, 52)
-        XCTAssertEqual(date!.weekOfMonth, 4)
-        XCTAssertEqual(date!.year, 1900)
-        XCTAssertEqual(date!.month, 12)
-        XCTAssertEqual(date!.day, 24)
-        XCTAssertEqual(date!.hour, 7)
-        XCTAssertEqual(date!.second, 35)
-        XCTAssertEqual(date!.weekday, 2)
+        XCTAssertEqual(date!.weekOfMonth, 0)
+        XCTAssertEqual(date!.year, 2022)
+        XCTAssertEqual(date!.month, 1)
+        XCTAssertEqual(date!.day, 1)
+        XCTAssertEqual(date!.hour, 9)
+        XCTAssertEqual(date!.minute, 0)
+        XCTAssertEqual(date!.second, 0)
+        XCTAssertEqual(date!.weekday, 7)
         
         
     }
