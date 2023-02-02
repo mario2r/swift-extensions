@@ -18,8 +18,7 @@ class CGFloatTestCases: XCTestCase {
     }
 
     func testCGFloat() throws {
-        var value: CGFloat = -12.6
-        XCTAssertEqual(value.abs, CGFloat(12.6))
+        XCTAssertEqual(CGFloat(-12.6).abs, CGFloat(12.6))
         XCTAssertEqual(CGFloat(12.6).ceil, CGFloat(13.0))
         
         XCTAssertEqual(CGFloat(180).degreesToRadians, CGFloat.pi)

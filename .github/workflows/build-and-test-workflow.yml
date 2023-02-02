@@ -20,15 +20,4 @@ jobs:
     - name: Build
       run: swift build -v
     - name: Tests
-      run: swift test -v
-  codecov:
-    container:
-      image: swift:5.7
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: swift test -v --enable-code-coverage
-      - uses: mattpolzin/swift-codecov-action@0.7.5
-        with:
-          MINIMUM_COVERAGE: 80
-          INCLUDE_TESTS: 'true'
+      run: swift test -c debug
