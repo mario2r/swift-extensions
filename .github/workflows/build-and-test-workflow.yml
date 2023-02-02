@@ -21,8 +21,14 @@ jobs:
       run: swift build -v
     - name: Tests
       run: swift test -v
-  swiftlint:
+  codecov:
+    container:
+      image: swift:5.7
     runs-on: ubuntu-latest
     steps:
-    - name: SwiftLint
-      uses: norio-nomura/action-swiftlint@3.2.1
+      - uses: actions/checkout@v3
+      - run: swift test --enable-test-discovery --enable-code-coverage
+      - uses: mattpolzin/swift-codecov-action@0.7.5
+        with:
+          MINIMUM_COVERAGE: 80
+          INCLUDE_TESTS: 'true'
