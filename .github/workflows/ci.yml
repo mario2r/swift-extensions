@@ -26,7 +26,7 @@ jobs:
       - name: Run Tests
         run: swift test -v --enable-code-coverage
       - name: Code coverage
-      - uses: michaelhenry/swifty-code-coverage@v1.0.0
+        uses: michaelhenry/swifty-code-coverage@v1.0.0
         with:
           build-path: .build
           target: ${{ env.PROJECT_NAME }}Tests.xctest
