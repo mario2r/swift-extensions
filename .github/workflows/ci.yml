@@ -51,8 +51,8 @@ jobs:
         MINIMUM_COVERAGE: 98
         INCLUDE_TESTS: 'true'
 
-    build:
-      runs-on: ubuntu-22.04
+  build:
+    runs-on: ubuntu-22.04
 
     steps:
       - uses: actions/checkout@v2
