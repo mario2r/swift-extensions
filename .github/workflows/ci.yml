@@ -18,7 +18,7 @@ env:
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
       - name: Build
@@ -26,14 +26,9 @@ jobs:
       - name: Run Tests
         run: swift test -v --enable-code-coverage
       - name: Code coverage
-        uses: mattpolzin/swift-codecov-action@0.7.5
+        uses: maxep/spm-lcov-action@0.3.0
         with:
-          MINIMUM_COVERAGE: 98
-          INCLUDE_TESTS: 'true'
-
-        #uses: maxep/spm-lcov-action@0.3.0
-        #with:
-        #  output-file: ./coverage/lcov.info
+          output-file: ./coverage/lcov.info
 
   swiftlint:
     runs-on: ubuntu-latest
@@ -43,3 +38,15 @@ jobs:
         uses: sinoru/actions-swiftlint@v6
         env:
           WORKING_DIRECTORY: Source
+
+  codecov:
+    container:
+      image: swift:5.7
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: swift test -v --enable-code-coverage
+    - uses: mattpolzin/swift-codecov-action@0.7.5
+      with:
+        MINIMUM_COVERAGE: 98
+        INCLUDE_TESTS: 'true'
