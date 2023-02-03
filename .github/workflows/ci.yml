@@ -49,4 +49,3 @@ jobs:
     - uses: mattpolzin/swift-codecov-action@0.7.5
       with:
         MINIMUM_COVERAGE: 98
-        INCLUDE_TESTS: 'true'
