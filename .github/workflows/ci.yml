@@ -44,14 +44,3 @@ jobs:
         with:
           MINIMUM_COVERAGE: 98
           INCLUDE_TESTS: 'true'
-
-  codecov2:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run tests
-      run: swift test --enable-code-coverage
-      - name: Test coverage
-      uses: maxep/spm-lcov-action@0.3.0
-      with:
-        output-file: ./coverage/lcov.info
-
