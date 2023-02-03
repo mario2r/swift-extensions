@@ -46,6 +46,17 @@ jobs:
           target: ${{ env.PROJECT_NAME }}Tests.xctest
           is-spm: true
           output: "coverage/lcov.info"
-          output-artifact-name: "codeclimate-artifact"
           ignore-filename-regex: '^[\w,\s-]+ViewController\.swift$'
+
+  codecov2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: maxep/spm-lcov-action@0.3.0
+        with:
+          output-file: ./coverage/lcov.info
+
+  codecov3:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: sersoft-gmbh/swift-coverage-action@v3
 

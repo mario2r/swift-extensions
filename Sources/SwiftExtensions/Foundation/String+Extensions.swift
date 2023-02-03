@@ -40,8 +40,8 @@ public extension String {
 
     // MARK: - Subscripts
     // swiftlint:disable identifier_name
-    subscript (i: Int) -> String {
-        return self[i ..< i + 1]
+    subscript (index: Int) -> String {
+        return self[index ..< index + 1]
     }
 
     func substring(fromIndex: Int) -> String {
