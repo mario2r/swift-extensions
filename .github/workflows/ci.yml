@@ -21,14 +21,20 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Build and Run Tests
+      - name: Build
         run: swift build -v
-      - name: Tests
+      - name: Run Tests
         run: swift test -v --enable-code-coverage
-      - name: Test coverage
-        uses: maxep/spm-lcov-action@0.3.0
+      - name: Code coverage
+      - uses: michaelhenry/swifty-code-coverage@v1.0.0
         with:
-          output-file: ./coverage/lcov.info
+          build-path: .build
+          target: ${{ env.PROJECT_NAME }}Tests.xctest
+          is-spm: true
+
+        #uses: maxep/spm-lcov-action@0.3.0
+        #with:
+        #  output-file: ./coverage/lcov.info
 
   swiftlint:
     runs-on: ubuntu-latest
@@ -48,19 +54,6 @@ jobs:
         with:
           MINIMUM_COVERAGE: 98
           INCLUDE_TESTS: 'true'
-
-  codecov2: 
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Build
-        run: swift build -v
-      - name: Run tests
-        run: swift test -v --enable-code-coverage
-      - name: Test coverage
-        uses: maxep/spm-lcov-action@0.3.0
-        with:
-          output-file: ./coverage/lcov.info
 
   codecov3: 
     runs-on: ubuntu-latest
