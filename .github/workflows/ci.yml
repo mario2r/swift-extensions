@@ -34,7 +34,6 @@ jobs:
         uses: sinoru/actions-swiftlint@v6
         env:
           WORKING_DIRECTORY: Source
-          
 
   codecov:
     runs-on: ubuntu-latest

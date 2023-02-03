@@ -18,7 +18,7 @@ public extension Double {
     var int: Int {
         return Int(self)
     }
-    
+
     /// Float
     var float: Float {
         return Float(self)

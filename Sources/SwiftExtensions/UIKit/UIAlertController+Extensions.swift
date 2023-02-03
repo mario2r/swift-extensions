@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - Methods
 public extension UIAlertController {
-    
+
     /// Display a simple alert
     /// - Parameters:
     ///   - title: alert's title
@@ -20,7 +20,7 @@ public extension UIAlertController {
         alert.addAction(UIAlertAction(title: "Accept", style: .default))
         controller.show(alert, sender: nil)
     }
-    
+
     /// Display a simple alert with actions
     /// - Parameters:
     ///   - title: alert's title
@@ -32,7 +32,7 @@ public extension UIAlertController {
         actions.forEach { alert.addAction($0) }
         controller.show(alert, sender: nil)
     }
-    
+
     /// Display an error alert
     /// - Parameters:
     ///   - error: error to be display
@@ -42,7 +42,7 @@ public extension UIAlertController {
         alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
         controller.show(alert, sender: nil)
     }
-    
+
 }
 
 #endif

@@ -39,6 +39,7 @@ public extension String {
     }
 
     // MARK: - Subscripts
+    // swiftlint:disable identifier_name
     subscript (i: Int) -> String {
         return self[i ..< i + 1]
     }
@@ -111,6 +112,7 @@ public extension String {
         !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
     }
 
+    // swiftlint:disable line_length
     var isValidEmail: Bool {
         // http://emailregex.com/
         let regex =
