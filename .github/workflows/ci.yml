@@ -48,6 +48,7 @@ jobs:
   codecov2: 
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Run tests
         run: swift test --enable-code-coverage
       - name: Test coverage
@@ -58,6 +59,7 @@ jobs:
   codecov3: 
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - run: swift test --enable-code-coverage
       - uses: michaelhenry/swifty-code-coverage@v1.0.0
         with:
