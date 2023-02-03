@@ -38,7 +38,7 @@ jobs:
           xcode-version: "13.1"
 
       - name: Gather code coverage
-        run: xcrun llvm-cov export -format="lcov" .build/debug/{PACKAGE_NAME}Tests.xctest/Contents/MacOS/{PACKAGE_NAME}PackageTests -instr-profile .build/debug/codecov/default.profdata > coverage_report.lcov
+        run: xcrun llvm-cov export -format="lcov" .build/debug/${{ env.PACKAGE_NAME }}Tests.xctest/Contents/MacOS/${{ env.PACKAGE_NAME }}Tests -instr-profile .build/debug/codecov/default.profdata > coverage_report.lcov
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
