@@ -26,11 +26,10 @@ jobs:
       - name: Run Tests
         run: swift test -v --enable-code-coverage
       - name: Code coverage
-        uses: michaelhenry/swifty-code-coverage@v1.0.0
+       - uses: mattpolzin/swift-codecov-action@0.7.5
         with:
-          build-path: .build
-          target: ${{ env.PROJECT_NAME }}Tests.xctest
-          is-spm: true
+          MINIMUM_COVERAGE: 98
+          INCLUDE_TESTS: 'true'
 
         #uses: maxep/spm-lcov-action@0.3.0
         #with:
@@ -44,24 +43,3 @@ jobs:
         uses: sinoru/actions-swiftlint@v6
         env:
           WORKING_DIRECTORY: Source
-
-  codecov:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: swift test -v --enable-code-coverage
-      - uses: mattpolzin/swift-codecov-action@0.7.5
-        with:
-          MINIMUM_COVERAGE: 98
-          INCLUDE_TESTS: 'true'
-
-  codecov3: 
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: swift test -v --enable-code-coverage
-      - uses: michaelhenry/swifty-code-coverage@v1.0.0
-        with:
-          build-path: .build
-          target: ${{ env.PROJECT_NAME }}Tests.xctest
-          is-spm: true
