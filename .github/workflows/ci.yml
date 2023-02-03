@@ -49,3 +49,21 @@ jobs:
     - uses: mattpolzin/swift-codecov-action@0.7.5
       with:
         MINIMUM_COVERAGE: 98
+        INCLUDE_TESTS: 'true'
+
+    build:
+      runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Swift 5.7.3
+        run: wget -q https://download.swift.org/swift-5.7.3-release/ubuntu2204-aarch64/swift-5.7.3-RELEASE/swift-5.7.3-RELEASE-ubuntu22.04-aarch64.tar.gz.sig
+      - name: Extract Swift 5.7.3
+        run: tar xzf swift-5.7.3-RELEASE-ubuntu22.04-aarch64.tar.gz
+      - name: Add Path
+        run: echo "::add-path::$GITHUB_WORKSPACE/swift-5.7.3-RELEASE-ubuntu22.04/usr/bin"
+      - name: Build
+        run: swift build
+      - name: Run tests
+        run: swift test
+
