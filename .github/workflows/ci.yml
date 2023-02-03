@@ -52,8 +52,8 @@ jobs:
         run: swift test --enable-code-coverage
       - name: Test coverage
         uses: maxep/spm-lcov-action@0.3.0
-    with:
-      output-file: ./coverage/lcov.info
+        with:
+          output-file: ./coverage/lcov.info
 
   codecov3: 
     runs-on: ubuntu-latest
