@@ -5,9 +5,8 @@
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
-
 public extension UIView {
-    
+
     var parentViewController: UIViewController? {
         weak var parentResponder: UIResponder? = self
         while parentResponder != nil {
@@ -18,7 +17,7 @@ public extension UIView {
         }
         return nil
     }
-    
+
     /// Round corners of a view
     /// - Parameters:
     ///   - corners: corners to be applied effect
@@ -30,7 +29,7 @@ public extension UIView {
         mask.path = path.cgPath
         layer.mask = mask
     }
-    
+
     /// Shake view
     /// - Parameters:
     ///   - direction: shake direction (horizontal or vertical), (default is .horizontal).

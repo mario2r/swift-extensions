@@ -10,7 +10,6 @@ import CoreGraphics
 #if canImport(Foundation)
 import Foundation
 #endif
-
 public extension CGFloat {
     
     var abs: CGFloat {
