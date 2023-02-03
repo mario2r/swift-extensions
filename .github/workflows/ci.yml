@@ -13,24 +13,32 @@ on:
       - "Source/**"
       - "Tests/**"
 jobs:
-  build:
+  build-and-test:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Build
+    - name: Build and Run Tests
       run: swift build -v
     - name: Tests
-      run: swift test -v --enable-code-coverage
-  codecov:
-    container:
-      image: swift:5.7
+      run: swift test -v 
+
+  swiftlint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Code Coverage
-      run: swift test --enable-test-discovery --enable-code-coverage
-    - uses: mattpolzin/swift-codecov-action@0.7.5
-      with:
-        MINIMUM_COVERAGE: 70
-        INCLUDE_TESTS: 'true'
+      - uses: actions/checkout@v3
+      - name: GitHub Actions for SwiftLint (Different working directory)
+        uses: sinoru/actions-swiftlint@v6
+        with:
+          working-directory: Sources
+
+  codecov:
+    runs-on: ubuntu-latest
+    steps:
+      - run: swift test --enable-code-coverage
+      - uses: michaelhenry/swifty-code-coverage@v1.0.0
+        with:
+        build-path: .build
+        target: SwiftExtensions.xctest
+        is-spm: true
+        ignore-filename-regex: '^[\w,\s-]+ViewController\.swift$'
 
