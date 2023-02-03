@@ -7,7 +7,6 @@
 import CoreGraphics
 #endif
 
-
 public extension Double {
 
     /// String.

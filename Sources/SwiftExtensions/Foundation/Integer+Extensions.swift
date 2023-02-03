@@ -6,7 +6,6 @@
 #if canImport(CoreGraphics)
 import CoreGraphics
 #endif
-
 public extension Int {
 
     /// Radian value of degree input.

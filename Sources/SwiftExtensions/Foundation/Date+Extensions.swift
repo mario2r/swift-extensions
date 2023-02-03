@@ -3,7 +3,6 @@
 //  Created by mario2r on 29/01/2021.
 //
 import Foundation
-
 public extension Date {
 
     // MARK: - Transform
@@ -14,7 +13,6 @@ public extension Date {
     }
     
     // MARK: - Properties
-    
     var weekOfYear: Int {
         return Calendar.current.component(.weekOfYear, from: self)
     }
@@ -173,6 +171,5 @@ public extension Date {
     var isInCurrentYear: Bool {
         return Calendar.current.isDate(self, equalTo: Date(), toGranularity: .year)
     }
-
     
 }

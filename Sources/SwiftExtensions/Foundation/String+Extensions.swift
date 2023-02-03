@@ -3,7 +3,6 @@
 //  Created by mario2r on 26/01/2021.
 //
 
-
 #if canImport(Foundation)
 import Foundation
 #endif
@@ -23,7 +22,6 @@ import CoreGraphics
 #if canImport(CoreLocation)
 import CoreLocation
 #endif
-
 public extension String {
     
     // MARK: - Tools

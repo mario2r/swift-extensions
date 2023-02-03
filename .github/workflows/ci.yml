@@ -12,6 +12,10 @@ on:
       - "Package.swift"
       - "Source/**"
       - "Tests/**"
+
+env:
+  PROJECT_NAME: SwiftExtensions
+
 jobs:
   build-and-test:
     runs-on: macos-latest
@@ -26,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: GitHub Actions for SwiftLint (Different working directory)
+      - name: SwiftLint
         uses: sinoru/actions-swiftlint@v6
         with:
           working-directory: Sources
@@ -38,7 +42,9 @@ jobs:
       - uses: michaelhenry/swifty-code-coverage@v1.0.0
         with:
           build-path: .build
-          target: SwiftExtensions.xctest
+          target: ${{ env.PROJECT_NAME }}Tests.xctest
           is-spm: true
+          output: "coverage/lcov.info"
+          output-artifact-name: "codeclimate-artifact"
           ignore-filename-regex: '^[\w,\s-]+ViewController\.swift$'
 

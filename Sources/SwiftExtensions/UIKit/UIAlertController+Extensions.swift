@@ -7,7 +7,6 @@
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
-
 // MARK: - Methods
 public extension UIAlertController {
     

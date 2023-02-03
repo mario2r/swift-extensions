@@ -4,7 +4,6 @@
 //
 
 import Foundation
-
 public extension Data {
     
     // MARK: - Bytes
