@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: swift test --enable-code-coverage
+      - run: swift test -v --enable-code-coverage
       - uses: mattpolzin/swift-codecov-action@0.7.5
         with:
           MINIMUM_COVERAGE: 98
@@ -49,8 +49,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Build
+        run: swift build -v
       - name: Run tests
-        run: swift test --enable-code-coverage
+        run: swift test -v --enable-code-coverage
       - name: Test coverage
         uses: maxep/spm-lcov-action@0.3.0
         with:
@@ -60,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: swift test --enable-code-coverage
+      - run: swift test -v --enable-code-coverage
       - uses: michaelhenry/swifty-code-coverage@v1.0.0
         with:
           build-path: .build
