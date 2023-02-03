@@ -26,7 +26,7 @@ jobs:
       - name: Run Tests
         run: swift test -v --enable-code-coverage
       - name: Code coverage
-       - uses: mattpolzin/swift-codecov-action@0.7.5
+        uses: mattpolzin/swift-codecov-action@0.7.5
         with:
           MINIMUM_COVERAGE: 98
           INCLUDE_TESTS: 'true'
