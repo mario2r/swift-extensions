@@ -26,7 +26,7 @@ let package = Package(
 
 ## Get involved
 
-This library contains the most common Swift extensions I have used when developing but it doesn't mean they are the only or better ones. 
+This library contains some of the common swift extensions I have found when developing but it doesn't mean they are the only or better ones. 
 Just feel free to provide your feedback and contribution. Really happy to complete this library with all your experiences.
 
 Please, refer to [contributing guidelines](https://github.com/mario2r/swift-extensions/blob/main/CONTRIBUTING.md) before participating
