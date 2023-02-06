@@ -6,7 +6,7 @@
 [![Xcode](https://img.shields.io/badge/Xcode-13.4-blue.svg)](https://developer.apple.com/xcode)
 [![MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
 
-During my work career as Swift developer I have faced lot of situations where some extensions where needed to avoid code duplication
+During my work career as swift developer I have faced lot of situations where some extensions are needed to avoid code duplication
 
 ## Installation
 
